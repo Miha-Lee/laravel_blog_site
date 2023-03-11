@@ -1,3 +1,5 @@
+This is the Blog Site using the backend system of Laravel. Users can register, login and logout their own account and post their favorite blogs over here. Every user can share blogs in public. 
+
 The steps to launch the project.
 
 1. We have to create .env file in the root folder.
