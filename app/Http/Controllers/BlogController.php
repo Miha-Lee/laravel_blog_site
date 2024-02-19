@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Blog;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class BlogController extends Controller
 {
@@ -85,6 +86,10 @@ class BlogController extends Controller
     {
         if ($blog->user_id != Auth::user()->id) {
             abort(403, 'Unauthorized Action');
+        }
+
+        if ($blog->banner && Storage::disk('public')->exists($blog->banner)) {
+            Storage::disk('public')->delete($blog->banner);
         }
 
         $blog->delete();
